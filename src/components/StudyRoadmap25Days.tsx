@@ -29,45 +29,45 @@ const weeks = [
         { day: 2, topic: "Gia đình và quan hệ", status: "completed", score: 88, lessonType: "vocabulary-builder" },
         { day: 3, topic: "Công việc hàng ngày", status: "completed", score: 85, lessonType: "writing" },
         { day: 4, topic: "Thời gian và lịch trình", status: "current", score: null, lessonType: "listening" },
-        { day: 5, topic: "Thực phẩm và đồ uống", status: "locked", score: null, lessonType: "conversation" },
-        { day: 6, topic: "Mua sắm cơ bản", status: "locked", score: null, lessonType: "reading" },
-        { day: 7, topic: "Ôn tập tuần 1", status: "locked", score: null, lessonType: "pronunciation-practice" }
+        { day: 5, topic: "Thực phẩm và đồ uống", status: "current", score: null, lessonType: "conversation" },
+        { day: 6, topic: "Mua sắm cơ bản", status: "current", score: null, lessonType: "reading" },
+        { day: 7, topic: "Ôn tập tuần 1", status: "current", score: null, lessonType: "pronunciation-practice" }
       ]
     },
     {
       week: 2,
       title: "Tuần 2: Giao tiếp thường ngày",
       days: [
-        { day: 8, topic: "Hỏi đường và chỉ đường", status: "locked", score: null, lessonType: "conversation" },
-        { day: 9, topic: "Gọi điện thoại", status: "locked", score: null, lessonType: "listening" },
-        { day: 10, topic: "Đặt lịch hẹn", status: "locked", score: null, lessonType: "speaking-challenge" },
-        { day: 11, topic: "Thảo luận kế hoạch", status: "locked", score: null, lessonType: "writing" },
-        { day: 12, topic: "Mô tả trải nghiệm", status: "locked", score: null, lessonType: "conversation" },
-        { day: 13, topic: "Đưa ra ý kiến", status: "locked", score: null, lessonType: "reading" },
-        { day: 14, topic: "Kiểm tra giữa khóa", status: "locked", score: null, lessonType: "ai-assessment" }
+        { day: 8, topic: "Hỏi đường và chỉ đường", status: "current", score: null, lessonType: "conversation" },
+        { day: 9, topic: "Gọi điện thoại", status: "current", score: null, lessonType: "listening" },
+        { day: 10, topic: "Đặt lịch hẹn", status: "current", score: null, lessonType: "speaking-challenge" },
+        { day: 11, topic: "Thảo luận kế hoạch", status: "current", score: null, lessonType: "writing" },
+        { day: 12, topic: "Mô tả trải nghiệm", status: "current", score: null, lessonType: "conversation" },
+        { day: 13, topic: "Đưa ra ý kiến", status: "current", score: null, lessonType: "reading" },
+        { day: 14, topic: "Kiểm tra giữa khóa", status: "current", score: null, lessonType: "ai-assessment" }
       ]
     },
     {
       week: 3,
       title: "Tuần 3: Kỹ năng nghe nâng cao",
       days: [
-        { day: 15, topic: "Nghe hội thoại công việc", status: "locked", score: null, lessonType: "listening" },
-        { day: 16, topic: "Nghe thông báo", status: "locked", score: null, lessonType: "listening" },
-        { day: 17, topic: "Nghe báo cáo", status: "locked", score: null, lessonType: "listening" },
-        { day: 18, topic: "Nghe thuyết trình", status: "locked", score: null, lessonType: "listening" },
-        { day: 19, topic: "Nghe phỏng vấn", status: "locked", score: null, lessonType: "listening" },
-        { day: 20, topic: "Luyện nghe tổng hợp", status: "locked", score: null, lessonType: "listening" },
-        { day: 21, topic: "Ôn tập tuần 3", status: "locked", score: null, lessonType: "grammar-game" }
+        { day: 15, topic: "Nghe hội thoại công việc", status: "current", score: null, lessonType: "listening" },
+        { day: 16, topic: "Nghe thông báo", status: "current", score: null, lessonType: "listening" },
+        { day: 17, topic: "Nghe báo cáo", status: "current", score: null, lessonType: "listening" },
+        { day: 18, topic: "Nghe thuyết trình", status: "current", score: null, lessonType: "listening" },
+        { day: 19, topic: "Nghe phỏng vấn", status: "current", score: null, lessonType: "listening" },
+        { day: 20, topic: "Luyện nghe tổng hợp", status: "current", score: null, lessonType: "listening" },
+        { day: 21, topic: "Ôn tập tuần 3", status: "current", score: null, lessonType: "grammar-game" }
       ]
     },
     {
       week: 4,
       title: "Tuần 4: Tổng hợp và thực hành",
       days: [
-        { day: 22, topic: "Thi thử TOEIC Listening", status: "locked", score: null, lessonType: "listening" },
-        { day: 23, topic: "Thi thử TOEIC Reading", status: "locked", score: null, lessonType: "reading" },
-        { day: 24, topic: "Phân tích kết quả", status: "locked", score: null, lessonType: "ai-analysis" },
-        { day: 25, topic: "Hoàn thành khóa học", status: "locked", score: null, lessonType: "interactive-story" }
+        { day: 22, topic: "Thi thử TOEIC Listening", status: "current", score: null, lessonType: "listening" },
+        { day: 23, topic: "Thi thử TOEIC Reading", status: "current", score: null, lessonType: "reading" },
+        { day: 24, topic: "Phân tích kết quả", status: "current", score: null, lessonType: "ai-analysis" },
+        { day: 25, topic: "Hoàn thành khóa học", status: "current", score: null, lessonType: "interactive-story" }
       ]
     }
   ];
