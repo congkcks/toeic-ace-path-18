@@ -20,54 +20,54 @@ import {
 
 const StudyRoadmap25Days = () => {
   const navigate = useNavigate();
-  const weeks = [
+const weeks = [
     {
       week: 1,
       title: "Tuần 1: Nền tảng từ vựng",
       days: [
-        { day: 1, topic: "Giới thiệu bản thân", status: "completed", score: 92 },
-        { day: 2, topic: "Gia đình và quan hệ", status: "completed", score: 88 },
-        { day: 3, topic: "Công việc hàng ngày", status: "completed", score: 85 },
-        { day: 4, topic: "Thời gian và lịch trình", status: "current", score: null },
-        { day: 5, topic: "Thực phẩm và đồ uống", status: "locked", score: null },
-        { day: 6, topic: "Mua sắm cơ bản", status: "locked", score: null },
-        { day: 7, topic: "Ôn tập tuần 1", status: "locked", score: null }
+        { day: 1, topic: "Giới thiệu bản thân", status: "completed", score: 92, lessonType: "reading" },
+        { day: 2, topic: "Gia đình và quan hệ", status: "completed", score: 88, lessonType: "vocabulary-builder" },
+        { day: 3, topic: "Công việc hàng ngày", status: "completed", score: 85, lessonType: "writing" },
+        { day: 4, topic: "Thời gian và lịch trình", status: "current", score: null, lessonType: "listening" },
+        { day: 5, topic: "Thực phẩm và đồ uống", status: "locked", score: null, lessonType: "conversation" },
+        { day: 6, topic: "Mua sắm cơ bản", status: "locked", score: null, lessonType: "reading" },
+        { day: 7, topic: "Ôn tập tuần 1", status: "locked", score: null, lessonType: "pronunciation-practice" }
       ]
     },
     {
       week: 2,
       title: "Tuần 2: Giao tiếp thường ngày",
       days: [
-        { day: 8, topic: "Hỏi đường và chỉ đường", status: "locked", score: null },
-        { day: 9, topic: "Gọi điện thoại", status: "locked", score: null },
-        { day: 10, topic: "Đặt lịch hẹn", status: "locked", score: null },
-        { day: 11, topic: "Thảo luận kế hoạch", status: "locked", score: null },
-        { day: 12, topic: "Mô tả trải nghiệm", status: "locked", score: null },
-        { day: 13, topic: "Đưa ra ý kiến", status: "locked", score: null },
-        { day: 14, topic: "Kiểm tra giữa khóa", status: "locked", score: null }
+        { day: 8, topic: "Hỏi đường và chỉ đường", status: "locked", score: null, lessonType: "conversation" },
+        { day: 9, topic: "Gọi điện thoại", status: "locked", score: null, lessonType: "listening" },
+        { day: 10, topic: "Đặt lịch hẹn", status: "locked", score: null, lessonType: "speaking-challenge" },
+        { day: 11, topic: "Thảo luận kế hoạch", status: "locked", score: null, lessonType: "writing" },
+        { day: 12, topic: "Mô tả trải nghiệm", status: "locked", score: null, lessonType: "conversation" },
+        { day: 13, topic: "Đưa ra ý kiến", status: "locked", score: null, lessonType: "reading" },
+        { day: 14, topic: "Kiểm tra giữa khóa", status: "locked", score: null, lessonType: "ai-assessment" }
       ]
     },
     {
       week: 3,
       title: "Tuần 3: Kỹ năng nghe nâng cao",
       days: [
-        { day: 15, topic: "Nghe hội thoại công việc", status: "locked", score: null },
-        { day: 16, topic: "Nghe thông báo", status: "locked", score: null },
-        { day: 17, topic: "Nghe báo cáo", status: "locked", score: null },
-        { day: 18, topic: "Nghe thuyết trình", status: "locked", score: null },
-        { day: 19, topic: "Nghe phỏng vấn", status: "locked", score: null },
-        { day: 20, topic: "Luyện nghe tổng hợp", status: "locked", score: null },
-        { day: 21, topic: "Ôn tập tuần 3", status: "locked", score: null }
+        { day: 15, topic: "Nghe hội thoại công việc", status: "locked", score: null, lessonType: "listening" },
+        { day: 16, topic: "Nghe thông báo", status: "locked", score: null, lessonType: "listening" },
+        { day: 17, topic: "Nghe báo cáo", status: "locked", score: null, lessonType: "listening" },
+        { day: 18, topic: "Nghe thuyết trình", status: "locked", score: null, lessonType: "listening" },
+        { day: 19, topic: "Nghe phỏng vấn", status: "locked", score: null, lessonType: "listening" },
+        { day: 20, topic: "Luyện nghe tổng hợp", status: "locked", score: null, lessonType: "listening" },
+        { day: 21, topic: "Ôn tập tuần 3", status: "locked", score: null, lessonType: "grammar-game" }
       ]
     },
     {
       week: 4,
       title: "Tuần 4: Tổng hợp và thực hành",
       days: [
-        { day: 22, topic: "Thi thử TOEIC Listening", status: "locked", score: null },
-        { day: 23, topic: "Thi thử TOEIC Reading", status: "locked", score: null },
-        { day: 24, topic: "Phân tích kết quả", status: "locked", score: null },
-        { day: 25, topic: "Hoàn thành khóa học", status: "locked", score: null }
+        { day: 22, topic: "Thi thử TOEIC Listening", status: "locked", score: null, lessonType: "listening" },
+        { day: 23, topic: "Thi thử TOEIC Reading", status: "locked", score: null, lessonType: "reading" },
+        { day: 24, topic: "Phân tích kết quả", status: "locked", score: null, lessonType: "ai-analysis" },
+        { day: 25, topic: "Hoàn thành khóa học", status: "locked", score: null, lessonType: "interactive-story" }
       ]
     }
   ];
@@ -208,10 +208,12 @@ const StudyRoadmap25Days = () => {
                           <Button 
                             size="sm"
                             onClick={() => {
-                              // Navigate to different lesson types based on day number
-                              const lessonType = day.day % 3 === 0 ? 'writing' : 
-                                               day.day % 2 === 0 ? 'listening' : 'reading';
-                              navigate(`/lesson/${lessonType}`);
+                              const routePath = day.lessonType.includes('lesson/') 
+                                ? `/${day.lessonType}` 
+                                : day.lessonType.startsWith('/') 
+                                  ? day.lessonType 
+                                  : `/lesson/${day.lessonType}`;
+                              navigate(routePath);
                             }}
                           >
                             <ArrowRight className="w-4 h-4 mr-2" />
@@ -239,7 +241,19 @@ const StudyRoadmap25Days = () => {
         <Button 
           variant="hero" 
           size="lg"
-          onClick={() => navigate('/lesson/reading')}
+          onClick={() => {
+            const currentDay = weeks.flatMap(w => w.days).find(d => d.status === "current");
+            if (currentDay) {
+              const routePath = currentDay.lessonType.includes('lesson/') 
+                ? `/${currentDay.lessonType}` 
+                : currentDay.lessonType.startsWith('/') 
+                  ? currentDay.lessonType 
+                  : `/lesson/${currentDay.lessonType}`;
+              navigate(routePath);
+            } else {
+              navigate('/lesson/reading');
+            }
+          }}
         >
           <ArrowRight className="w-4 h-4 mr-2" />
           Tiếp tục học tập
