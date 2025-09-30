@@ -1,4 +1,4 @@
-const API_BASE_URL = 'https://localhost:7035/api';
+const API_BASE_URL = 'https://tile-comfort-housing-bathrooms.trycloudflare.com/api';
 
 // Types based on API responses
 export interface User {
@@ -61,25 +61,42 @@ export interface Badge {
   awardedAt: string;
 }
 
+export interface DashboardSummary {
+  streakDays: number;
+  predictedScore: number;
+  completedLessons: number;
+  totalLessons: number;
+  studyTimeHours: number;
+}
+
+export interface DashboardProgress {
+  listening: number;
+  reading: number;
+  writing: number;
+  speaking: number;
+}
+
+export interface RecentResult {
+  exercise: string;
+  score: number;
+}
+
 export interface DashboardStats {
   streakDays: number;
   totalScore: number;
   completedExercises: number;
   totalExercises: number;
   studyHours: number;
-  progress: {
-    listening: number;
-    reading: number;
-    writing: number;
-    speaking: number;
-  };
-  recentResults: Array<{
-    exercise: string;
-    score: number;
-  }>;
+  progress: DashboardProgress;
+  recentResults: RecentResult[];
 }
 
 export interface TopicExercises {
+  topic: string;
+  exercises: Exercise[];
+}
+
+export interface ExercisesByTopicResponse {
   topic: string;
   exercises: Exercise[];
 }
@@ -128,7 +145,10 @@ export class ApiService {
   async login(credentials: { email: string; password: string }): Promise<{ token: string; userId: number }> {
     const response = await this.request<{ token: string; userId: number }>('/users/login', {
       method: 'POST',
-      body: JSON.stringify(credentials),
+      body: JSON.stringify({
+        email: credentials.email,
+        passwordHash: credentials.password
+      }),
     });
     
     this.token = response.token;
@@ -147,24 +167,43 @@ export class ApiService {
     return this.request<Exercise[]>('/exercises');
   }
 
-  async getExercisesByTopic(topicName: string): Promise<TopicExercises> {
-    return this.request<TopicExercises>(`/exercises/topic/${topicName}`);
+  async getExercisesByTopic(): Promise<ExercisesByTopicResponse[]> {
+    return this.request<ExercisesByTopicResponse[]>('/exercises/by-topic');
+  }
+
+  async getExercisesByTopicName(topicName: string): Promise<TopicExercises> {
+    const allTopics = await this.getExercisesByTopic();
+    const topic = allTopics.find(t => t.topic === topicName);
+    if (!topic) {
+      throw new Error(`Topic ${topicName} not found`);
+    }
+    return topic;
   }
 
   async getExerciseById(exerciseId: number): Promise<Exercise> {
     return this.request<Exercise>(`/exercises/${exerciseId}`);
   }
 
+  async getPendingExercises(userId: number): Promise<Exercise[]> {
+    return this.request<Exercise[]>(`/users/users/${userId}/exercises/pending`);
+  }
+
   // Submission API
   async submitExercise(submissionData: {
     userId: number;
     exerciseId: number;
-    answers: Array<{ questionId: number; optionId: number }>;
+    score: number;
+    isCompleted: boolean;
+    durationMinutes?: number;
   }): Promise<Submission> {
     return this.request<Submission>('/submissions', {
       method: 'POST',
       body: JSON.stringify(submissionData),
     });
+  }
+
+  async getUserSubmissions(userId: number): Promise<Submission[]> {
+    return this.request<Submission[]>(`/submissions/user/${userId}`);
   }
 
   // Learning Plan API
@@ -178,8 +217,39 @@ export class ApiService {
   }
 
   // Dashboard API
+  async getDashboardSummary(userId: number): Promise<DashboardSummary> {
+    return this.request<DashboardSummary>(`/dashboard/summary/${userId}`);
+  }
+
+  async getDashboardProgress(userId: number): Promise<DashboardProgress> {
+    return this.request<DashboardProgress>(`/dashboard/progress/${userId}`);
+  }
+
+  async getDashboardToday(userId: number): Promise<LearningPlan[]> {
+    return this.request<LearningPlan[]>(`/dashboard/today/${userId}`);
+  }
+
+  async getDashboardRecentResults(userId: number): Promise<RecentResult[]> {
+    return this.request<RecentResult[]>(`/dashboard/recent-results/${userId}`);
+  }
+
   async getDashboardStats(userId: number): Promise<DashboardStats> {
-    return this.request<DashboardStats>(`/dashboard/${userId}`);
+    // Combine multiple dashboard endpoints
+    const [summary, progress, recentResults] = await Promise.all([
+      this.getDashboardSummary(userId),
+      this.getDashboardProgress(userId),
+      this.getDashboardRecentResults(userId)
+    ]);
+
+    return {
+      streakDays: summary.streakDays,
+      totalScore: summary.predictedScore,
+      completedExercises: summary.completedLessons,
+      totalExercises: summary.totalLessons,
+      studyHours: summary.studyTimeHours,
+      progress,
+      recentResults
+    };
   }
 
   // Utility methods

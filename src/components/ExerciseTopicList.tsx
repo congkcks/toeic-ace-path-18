@@ -23,7 +23,7 @@ const ExerciseTopicList = ({ topicName }: ExerciseTopicListProps) => {
   const fetchTopicExercises = async () => {
     try {
       setLoading(true);
-      const data = await apiService.getExercisesByTopic(topicName);
+      const data = await apiService.getExercisesByTopicName(topicName);
       setTopicData(data);
     } catch (err) {
       setError('Không thể tải bài tập. Vui lòng thử lại.');
