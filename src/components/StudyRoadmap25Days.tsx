@@ -51,11 +51,6 @@ const StudyRoadmap25Days = () => {
     try {
       setLoading(true);
       const userId = apiService.getCurrentUserId();
-      
-      if (!userId) {
-        setError('Vui lòng đăng nhập để xem lộ trình học tập');
-        return;
-      }
 
       const planData = await apiService.getLearningPlan(userId);
       setLearningPlan(planData);

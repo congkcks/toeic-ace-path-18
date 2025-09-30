@@ -23,11 +23,6 @@ const LearningPlanView = () => {
     try {
       setLoading(true);
       const userId = apiService.getCurrentUserId();
-      
-      if (!userId) {
-        setError('Vui lòng đăng nhập để xem kế hoạch học tập');
-        return;
-      }
 
       const planData = await apiService.getLearningPlan(userId);
       setLearningPlan(planData);

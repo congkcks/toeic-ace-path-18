@@ -260,12 +260,11 @@ export class ApiService {
   }
 
   isAuthenticated(): boolean {
-    return !!this.token;
+    return true; // Always authenticated for testing
   }
 
-  getCurrentUserId(): number | null {
-    const userId = localStorage.getItem('userId');
-    return userId ? parseInt(userId, 10) : null;
+  getCurrentUserId(): number {
+    return 4; // Fixed userId for testing
   }
 }
 

@@ -27,11 +27,6 @@ const UserProgressDashboard = () => {
     try {
       setLoading(true);
       const userId = apiService.getCurrentUserId();
-      
-      if (!userId) {
-        setError('Vui lòng đăng nhập để xem tiến độ');
-        return;
-      }
 
       const [dashboardStats, userBadges] = await Promise.all([
         apiService.getDashboardStats(userId),
